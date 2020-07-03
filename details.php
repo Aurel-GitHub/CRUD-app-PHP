@@ -69,9 +69,6 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             <p>Prix: <?= $produit['prix']?><p>
             <p>Nombre en stock : <?= $produit['nombre']?><p>
             <p><a href="edit.php?id=<?= $produit['id'] ?>">Modifier</p>
-
-
-
         </section>
         </div>
     </main>
