@@ -3,29 +3,21 @@ session_start();
 
 
 
-//VERIFICATION DE L'EXISTENCE DE L'ID
 if(isset($_GET['id']) && !empty($_GET['id'])){
     require_once('connect.php');
 
-    //on nettoie l'id envoyé contre mauvaise manip des users
-    $id = strip_tags($_GET['id']);//suppression des balises de l id
+    $id = strip_tags($_GET['id']);
 
-    $sql = 'SELECT * FROM articles WHERE id = :id;'; //insertion de l' id
+    $sql = 'SELECT * FROM articles WHERE id = :id;'; 
 
-    //prepare la requete
     $query = $db->prepare($sql);
 
-    //on accroche les parametres (id)
 
-    $query->bindValue(':id', $id, PDO::PARAM_INT);//bind.. associe une valeur à un paramètre PDO::PARAM_INT pour forcer l'id à etre un entier
-
-    //On execute la requte
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
 
-    //On affiche le produit
-    $produit = $query->fetch();//on recup qu un pdt
+    $produit = $query->fetch();
 
-    //on vérifie si le pdt existe
     if(!$produit){
         $_SESSION['erreur'] = "Cet ID n'existe pas";
     header('Location: index.php');
@@ -33,7 +25,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
 }else{
     $_SESSION['erreur'] = "URL invalide";
-    header('Location: index.php'); //redirection vers index en cas d'erreur id dans l'url
+    header('Location: index.php'); 
 }
 
 if($_POST){
@@ -44,7 +36,6 @@ if($_POST){
 
         require_once('connect.php');
 
-        //nettoyage des données
         $produit = strip_tags($_POST['id']);
         $produit = strip_tags($_POST['produits']);
         $prix = strip_tags($_POST['prix']);

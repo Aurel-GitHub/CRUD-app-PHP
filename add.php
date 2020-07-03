@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if($_POST){
@@ -8,7 +9,6 @@ if($_POST){
 
         require_once('connect.php');
 
-        //nettoyage des données
         $produit = strip_tags($_POST['produits']);
         $prix = strip_tags($_POST['prix']);
         $nombre = strip_tags($_POST['nombre']);
@@ -29,8 +29,6 @@ if($_POST){
         $_SESSION['erreur'] = "Le formulaire est incomplet";
     }
 }
-
-
 
 ?>
 

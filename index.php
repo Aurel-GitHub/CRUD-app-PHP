@@ -1,19 +1,16 @@
 <?php
 session_start();
 
-//co à la base
+
 require_once('connect.php');
 
 $sql ='SELECT * FROM articles';
 
-//preparation de la requete
 $query = $db->prepare($sql);
 
-//on execute la requete
 $query->execute();
 
-//stockage des données dans un tableau
-$result = $query->fetchAll(PDO::FETCH_ASSOC);//que des resultats avec les titres des différentes colonnes
+$result = $query->fetchAll(PDO::FETCH_ASSOC);// resultats avec les titres des différentes colonnes
 
 require_once('close.php');
 
@@ -66,7 +63,7 @@ require_once('close.php');
                     <th>Produit</th>
                     <th>Prix</th>
                     <th>Nombre</th>
-                    <th>Activer</th>
+                    <th>Activé</th>
                     <th>Actions</th>
                 </thead>
                 <tbody>
@@ -75,7 +72,7 @@ require_once('close.php');
                         foreach($result as $produit)
                         {
                         ?>
-                            <tr>
+                        <tr>
                                 <td><?= $produit['id']?></td>
                                 <td><?= $produit['produits']?></td>
                                 <td><?= $produit['prix']?></td>

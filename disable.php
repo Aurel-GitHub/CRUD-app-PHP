@@ -11,18 +11,13 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
     $sql = 'SELECT * FROM articles WHERE id = :id;';
 
-    // On prépare la requête
     $query = $db->prepare($sql);
 
-    // On "accroche" les paramètre (id)
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     
-    // On exécute la requête
     $query->execute();
 
-    // On récupère le produit
     $produit = $query->fetch();
-    // On vérifie si le produit existe
     if(!$produit){
         $_SESSION['erreur'] = "Cet id n'existe pas";
         header('Location: index.php');
@@ -33,14 +28,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
     $sql = 'UPDATE articles SET actif=:actif WHERE id = :id;';
 
-    // On prépare la requête
     $query = $db->prepare($sql);
 
-    // On "accroche" les paramètres
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->bindValue(':actif', $actif, PDO::PARAM_INT);
 
-    // On exécute la requête
     $query->execute();
     
     header('Location: index.php');
