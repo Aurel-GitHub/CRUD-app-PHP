@@ -82,8 +82,8 @@ require_once('close.php');
                                 <td>
                                   <a href="details.php?id=<?= $produit['id']?>">Voir</a>
                                   <a href="edit.php?id=<?= $produit['id']?>">Modifier</a>
+                                  <a href="delete.php?id=<?= $produit['id']?>">Supprimer</a>
                                 </td>
-                                
                             </tr>
                         <?php
                         }
